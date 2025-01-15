@@ -8,6 +8,7 @@
  * 2. Create Webhook and specify New Ticket event
  * 3. Enter Request Endpoint URL as: URL_TO_WHMCS/modules/addons/tawkto/webhooks.php
  * 4. Update the variable below with the Secret Key that Tawk provides (be sure you do this on the live copy of this file)
+ * 5. In tawk.to under Settings > Mail Notifications, you probably want to set "Send New Ticket notificatoins to" to Nobody.
 **/
 
 const WEBHOOK_SECRET = 'webhook secret key';
