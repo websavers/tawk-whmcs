@@ -49,7 +49,11 @@ switch($tawk_data->event){ //4 possible events as follows
 
         $user_id = false;
         $client_id = false;
-/*
+
+/* This code associates a user and/or client by email address. It is commented out
+ * because we have no way of verifying that the user is authenticated, thus making it consistent
+ * with WHMCS's behaviour of not associating ticket with a client unless they're logged into their account.
+ * You may be comfortable using it if you only show your tawk widget to logged in customers.
         $w_u_results = localAPI('GetUsers', array('search' => $tawk_data->requester->email));
         if ($w_u_results['result'] === 'success'){
             $user = $w_u_results['users'][0];
