@@ -62,18 +62,17 @@ function tawkto_check($vars)
     $tawkname = "";
     if (isset($uid)) {
         //to name, or not to name, that is the question
-        $showname =  Capsule::table('tbladdonmodules')->select('value')-> WHERE('module', '=' , 'tawkto')->WHERE('setting' , '=', 'tawkto-name')->WHERE('value' , 'on')->count();
+        $showname = Capsule::table('tbladdonmodules')->select('value')-> WHERE('module', '=' , 'tawkto')->WHERE('setting' , '=', 'tawkto-name')->WHERE('value' , 'on')->count();
 
         if ($showname) {
-            //now we get what we get!
-            foreach (Capsule::table('tblclients') ->WHERE('id', $uid)->get() as $tawkclients) {
-                $fname = html_entity_decode($tawkclients->firstname, ENT_QUOTES);
-                $lname = html_entity_decode($tawkclients->lastname, ENT_QUOTES);
-                $fname = addslashes($fname);
-                $lname = addslashes($lname);
-                $company = $tawkclients->companyname;
-                $emailaddress = $tawkclients->email;
-            }
+
+            $tawkclient = Capsule::table('tblclients') ->WHERE('id', $uid)->first();
+            $fname = html_entity_decode($tawkclient->firstname, ENT_QUOTES);
+            $lname = html_entity_decode($tawkclient->lastname, ENT_QUOTES);
+            $fname = addslashes($fname);
+            $lname = addslashes($lname);
+            $company = $tawkclient->companyname;
+            $emailaddress = $tawkclient->email;
 
             // show in secure mode if api key is set. else, show basic name/email info
             if (($fname || $lname) && $emailaddress) {
