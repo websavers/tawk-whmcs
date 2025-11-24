@@ -67,11 +67,9 @@ function tawkto_check($vars)
         if ($showname) {
 
             $tawkclient = Capsule::table('tblclients') ->WHERE('id', $uid)->first();
-            $fname = html_entity_decode($tawkclient->firstname, ENT_QUOTES);
-            $lname = html_entity_decode($tawkclient->lastname, ENT_QUOTES);
-            $fname = addslashes($fname);
-            $lname = addslashes($lname);
-            $company = $tawkclient->companyname;
+            $fname = addslashes(html_entity_decode($tawkclient->firstname, ENT_QUOTES));
+            $lname = addslashes(html_entity_decode($tawkclient->lastname, ENT_QUOTES));
+            //$company = $tawkclient->companyname;
             $emailaddress = $tawkclient->email;
 
             // show in secure mode if api key is set. else, show basic name/email info
