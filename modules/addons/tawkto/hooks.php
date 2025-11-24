@@ -68,9 +68,9 @@ function tawkto_check($vars)
             //now we get what we get!
             foreach (Capsule::table('tblclients') ->WHERE('id', $uid)->get() as $tawkclients) {
                 $fname = html_entity_decode($tawkclients->firstname, ENT_QUOTES);
-                $tlname = html_entity_decode($tawkclients->lastname, ENT_QUOTES);
+                $lname = html_entity_decode($tawkclients->lastname, ENT_QUOTES);
                 $fname = addslashes($fname);
-                $lname = addslashes($tlname);
+                $lname = addslashes($lname);
                 $company = $tawkclients->companyname;
                 $emailaddress = $tawkclients->email;
             }
